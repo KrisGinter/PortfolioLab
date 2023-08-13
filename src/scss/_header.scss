@@ -1,0 +1,84 @@
+@import "settings/colors";
+
+.header__container {
+  display: flex;
+}
+
+
+.header__background {
+  object-fit: cover;
+  object-position: right;
+  width: 45vw;
+  height: 100vh;
+}
+
+.header__login {
+  padding-top: 37px;
+  padding-left: 515px;
+  display: flex;
+  gap: 20px;
+}
+
+.login {
+  text-decoration: none;
+  font-size: 14px;
+  color: $color-dark-grey;
+  border: transparent 1px solid;
+  padding: 5px;
+  &:hover {
+    border: $color-yellow 1px solid;
+  }
+}
+
+.header__menu {
+  display: flex;
+  gap: 10px;
+  font-size: 18px;
+  padding-top: 20px;
+}
+
+.scroll__link {
+  color: $color-dark-grey;
+  padding: 9px 20px;
+  border: transparent 1px solid;
+
+  &:hover {
+    border: $color-dark-grey 1px solid;
+  }
+}
+
+.header__main{
+  text-align: center;
+  padding-top: 150px;
+  padding-right: 100px;
+
+  h1 {
+    font-size: 28px;
+    color: black;
+    padding: 5px;
+  }
+}
+
+.header__decoration {
+  padding: 20px;
+  max-width: 200px;
+}
+
+.header__buttons{
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+}
+
+.header__button {
+  display: flex;
+  font-size: 28px;
+  font-weight: lighter;
+  text-decoration: none;
+  color: $color-dark-grey;
+  text-transform: uppercase;
+  padding: 20px 60px;
+  width: 150px;
+  line-height: 35px;
+  border: $color-dark-grey 2px solid;
+}
