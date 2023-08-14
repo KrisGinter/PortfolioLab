@@ -11,29 +11,29 @@ export default function Idea(){
         <div id="idea" className="container idea__container">
             <div className="idea__heading">
                 <h1>Wystarczą 4 proste kroki</h1>
-                <img className="header__decoration" src={Decoration}/>
+                <img alt="decoration" className="header__decoration" src={Decoration}/>
             </div>
             <div className="idea__content">
                 <div className="idea__box">
-                    <img className="idea__icon" src={Icon1}/>
+                    <img alt="icon" className="idea__icon" src={Icon1}/>
                     <p>Wybierz rzeczy</p>
                     <div className="idea__line"></div>
                     <p>ubrania, zabawki, sprzęt i inne</p>
                 </div>
                 <div className="idea__box">
-                    <img className="idea__icon" src={Icon2}/>
+                    <img alt="icon" className="idea__icon" src={Icon2}/>
                     <p>Spakuj je</p>
                     <div className="idea__line"></div>
                     <p>skorzystaj z worków na śmieci</p>
                 </div>
                 <div className="idea__box">
-                    <img className="idea__icon" src={Icon3}/>
+                    <img alt="icon" className="idea__icon" src={Icon3}/>
                     <p>Zdecyduj komu chcesz pomóc</p>
                     <div className="idea__line"></div>
                     <p>wybierz zaufane miejsce</p>
                 </div>
                 <div className="idea__box">
-                    <img className="idea__icon" src={Icon4}/>
+                    <img alt="icon" className="idea__icon" src={Icon4}/>
                     <p>Zamów kuriera</p>
                     <div className="idea__line"></div>
                     <p>kurier przyjedzie w dogodnym terminie</p>
