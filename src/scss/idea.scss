@@ -1,0 +1,60 @@
+@import "settings/fonts";
+@import "settings/colors";
+
+.idea__container {
+}
+
+.idea__heading {
+  text-align: center;
+  padding-top: 45px;
+  h1 {
+    font-size: 28px;
+    color: black;
+  }
+}
+
+.idea__content {
+  margin-top: 15px;
+  background-color: $color-grey;
+  display: flex;
+  justify-content: center;
+  gap: 100px;
+}
+
+.idea__line {
+  content: "";
+  height: 1px;
+  width: 80px;
+  background-color: black;
+  margin-left: 45px;
+}
+
+.idea__icon {
+  padding-left: 45px;
+}
+
+.idea__box {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    max-width: 160px;
+    padding: 10px;
+    height: 25px;
+  }
+}
+
+.idea__button {
+  text-align: center;
+}
+
+.idea__button__container {
+  padding-top: 30px;
+  padding-bottom: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
