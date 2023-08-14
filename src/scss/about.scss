@@ -4,3 +4,44 @@
 .about__container {
   display: flex;
 }
+
+.about__box {
+  min-width: 760px;
+}
+
+.about__box1 {
+  background-color: $color-grey;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  h1 {
+    padding-top: 100px;
+    color: $color-mine;
+  }
+  p {
+    max-width: 400px;
+    font-size: 20px;
+    color: $color-mine;
+  }
+}
+
+.about__signature {
+  padding-top: 30px;
+  padding-left: 200px;
+  height: 100px;
+}
+
+.about__image {
+  width: 755px;
+  height: 500px;
+  object-fit: cover;
+}
+
+.about__signature {
+  padding-top: 30px;
+  padding-left: 200px;
+  height: 100px;
+}
+
+
