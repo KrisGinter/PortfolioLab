@@ -10,8 +10,7 @@ export default function About(){
                 <h1>O nas</h1>
                 <img alt="decoration" className="header__decoration" src={Decoration}/>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore magna aliqua.Amet nisl purus in mollis nunc sed.
-                    Augue mauris augue neque gravida in fermentum et. </p>
+                    et dolore magna aliqua. Amet nisl purus in mollis nunc sed.</p>
                 <img alt="signature" className="about__signature" src={Signature}></img>
             </div>
             <div className="about__box">

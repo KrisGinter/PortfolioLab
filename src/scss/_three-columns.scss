@@ -1,4 +1,5 @@
 @import "settings/fonts";
+@import "settings/colors";
 
 .three-columns__container {
   background-image: url("../assets/3 Columns Background.png");
@@ -15,10 +16,12 @@
     font-size: 70px;
     font-weight: lighter;
     margin-bottom: 20px;
+    color: $color-mine;
   }
   h2{
     font-size: 18px;
     margin-bottom: 20px;
+    color: $color-mine;
   }
   p {
     width: 300px;
@@ -26,6 +29,8 @@
     margin-right: auto;
     font-family: $font-alt;
     font-weight: lighter;
+    color: $color-mine;
+    line-height: 27px;
   }
 }
 
