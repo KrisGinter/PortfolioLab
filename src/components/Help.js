@@ -48,21 +48,70 @@ const fundations = [{
         things: "ubrania, jedzenie, ciepłe koce"
     }]
 
+const organizations = [{
+    title:"Organizacja “Dbam o Zdrowie”",
+    target: "Cel i misja: Pomoc osobom znajdującym się w trudnej sytuacji życiowej.",
+    things: "ubrania, jedzenie, sprzęt AGD, meble, zabawki"
+},
+    {
+        title:"Organizacja “Dla dzieci”",
+        target: "Cel i misja: Pomoc dzieciom z ubogich rodzin.",
+        things: "ubrania, meble, zabawki"
+    },
+    {
+        title:"Organizacja “Bez domu”",
+        target: "Cel i misja: Pomoc dla osób nie posiadających miejsca zamieszkania.",
+        things: "ubrania, jedzenie, ciepłe koce"
+    },
+    {
+        title:"Organizacja “Słońce”",
+        target: "Cel i misja: Pomoc osobom znajdującym się w trudnej sytuacji życiowej.",
+        things: "ubrania, jedzenie, sprzęt AGD, meble, zabawki"
+    },
+    {
+        title:"Organizacja “Miłość”",
+        target: "Cel i misja: Pomoc dzieciom z ubogich rodzin.",
+        things: "ubrania, meble, zabawki"
+    },
+    {
+        title:"Organizacja “Nadzieja”",
+        target: "Cel i misja: Pomoc dla osób nie posiadających miejsca zamieszkania.",
+        things: "ubrania, jedzenie, ciepłe koce"
+    },
+    ]
 
+const local = [{
+    title:"Zbiórka “Dbam o Zdrowie”",
+    target: "Cel i misja: Pomoc osobom znajdującym się w trudnej sytuacji życiowej.",
+    things: "ubrania, jedzenie, sprzęt AGD, meble, zabawki"
+},
+    {
+        title:"Zbiórka “Dla dzieci”",
+        target: "Cel i misja: Pomoc dzieciom z ubogich rodzin.",
+        things: "ubrania, meble, zabawki"
+    },
+    {
+        title:"Zbiórka “Bez domu”",
+        target: "Cel i misja: Pomoc dla osób nie posiadających miejsca zamieszkania.",
+        things: "ubrania, jedzenie, ciepłe koce"
+    },
+
+]
 function Items({ currentItems }) {
     return (
-        <>
+        <div>
             {currentItems &&
                 currentItems.map((item) => (
-                    <div>
+                    <div className="help__details">
                         <div>
-                            <h1>item.title</h1>
-                            <p>item.target</p>
+                            <h2>{item.title}</h2>
+                            <p>{item.target}</p>
                         </div>
-                        <div><p>item.things</p></div>
+                        <div><span>{item.things}</span></div>
                     </div>
+
                 ))}
-        </>
+        </div>
     );
 }
 
@@ -70,51 +119,41 @@ export default function Help({ itemsPerPage }) {
     const [button1, setButton1] = useState(true);
     const [button2, setButton2] = useState(false);
     const [button3, setButton3] = useState(false);
+    const [items, setItems] = useState(fundations);
 
     function handleClick(buttonNumber) {
+        setItemOffset(0);
         if (buttonNumber === 1) {
             setButton1(true);
             setButton2(false);
             setButton3(false);
+            setItems(fundations);
         } else if (buttonNumber === 2) {
             setButton1(false);
             setButton2(true);
             setButton3(false);
+            setItems(organizations);
         } else if (buttonNumber === 3) {
             setButton1(false);
             setButton2(false);
             setButton3(true);
+            setItems(local);
         }
     }
 
-    const items = fundations
-    function setItems() {
-    }
-
-    // Here we use item offsets; we could also use page offsets
-    // following the API or data you're working with.
     const [itemOffset, setItemOffset] = useState(0);
-
-    // Simulate fetching items from another resources.
-    // (This could be items from props; or items loaded in a local state
-    // from an API endpoint with useEffect and useState)
     const endOffset = itemOffset + itemsPerPage;
-    console.log(`Loading items from ${itemOffset} to ${endOffset}`);
     const currentItems = items.slice(itemOffset, endOffset);
     const pageCount = Math.ceil(items.length / itemsPerPage);
 
-    // Invoke when user click to request another page.
     const handlePageClick = (event) => {
         const newOffset = (event.selected * itemsPerPage) % items.length;
-        console.log(
-            `User requested page number ${event.selected}, which is offset ${newOffset}`
-        );
         setItemOffset(newOffset);
     };
 
 
     return (
-        <div className="container">
+        <div id="organizations" className="container">
             <div className="help__heading">
                 <h1>Komu pomagamy?</h1>
                 <img alt="decoration" className="header__decoration" src={Decoration} />
@@ -124,24 +163,74 @@ export default function Help({ itemsPerPage }) {
                 <button onClick={() => handleClick(2)} className={`help__button ${button2 ? 'active' : ''}`}>Organizacjom pozarządowym</button>
                 <button onClick={() => handleClick(3)} className={`help__button ${button3 ? 'active' : ''}`}>Lokalnym organizacjom</button>
             </div>
-            <div className="help__description">
+            <div>
                 {button1 && (
                     <div>
-                        <p>W naszej bazie znajdziesz listę zweryfikowanych Fundacji, z którymi współpracujemy.
-                            Możesz sprawdzić czym się zajmują, komu pomagają i czego potrzebują.</p>
+                        <div className="help__description">
+                            <p>W naszej bazie znajdziesz listę zweryfikowanych Fundacji, z którymi współpracujemy.
+                                Możesz sprawdzić czym się zajmują, komu pomagają i czego potrzebują.</p>
+                        </div>
+                        <div>
+                            <Items currentItems={currentItems} />
+                            {items.length > itemsPerPage && <ReactPaginate
+                                breakLabel="..."
+                                onPageChange={handlePageClick}
+                                pageRangeDisplayed={5}
+                                pageCount={pageCount}
+                                renderOnZeroPageCount={null}
+                                previousLabel={''}
+                                nextLabel={''}
+                                containerClassName={'pagination'}
+                                pageLinkClassName={'page-link'}
+                                activeClassName={'active'}
+                            />}
+                        </div>
                     </div>
-
                 )}
                 {button2 && (
                     <div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore et dolore magna aliqua. Tincidunt praesent semper feugiat nibh.</p>
+                        <div className="help__description">
+                            <p>Turpis egestas maecenas pharetra convallis posuere morbi leo urna molestie. Vel turpis nunc
+                                eget lorem dolor sed viverra.</p>
+                        </div>
+                        <div>
+                            <Items currentItems={currentItems} />
+                            {items.length > itemsPerPage && <ReactPaginate
+                                breakLabel="..."
+                                onPageChange={handlePageClick}
+                                pageRangeDisplayed={5}
+                                pageCount={pageCount}
+                                renderOnZeroPageCount={null}
+                                previousLabel={''}
+                                nextLabel={''}
+                                containerClassName={'pagination'}
+                                pageLinkClassName={'page-link'}
+                                activeClassName={'active'}
+                            />}
+                        </div>
                     </div>
                 )}
                 {button3 && (
                     <div>
-                        <p>Turpis egestas maecenas pharetra convallis posuere morbi leo urna molestie. Vel turpis nunc
-                            eget lorem dolor sed viverra.</p>
+                        <div className="help__description">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                                labore et dolore magna aliqua. Tincidunt praesent semper feugiat nibh.</p>
+                        </div>
+                        <div>
+                            <Items currentItems={currentItems} />
+                            {items.length > itemsPerPage && <ReactPaginate
+                                breakLabel="..."
+                                onPageChange={handlePageClick}
+                                pageRangeDisplayed={5}
+                                pageCount={pageCount}
+                                renderOnZeroPageCount={null}
+                                previousLabel={''}
+                                nextLabel={''}
+                                containerClassName={'pagination'}
+                                pageLinkClassName={'page-link'}
+                                activeClassName={'active'}
+                            />}
+                        </div>
                     </div>
                 )}
             </div>

@@ -8,6 +8,8 @@
   flex-direction: column;
   justify-content: center;
   padding-top: 30px;
+  h1{
+    color: $color-mine;}
 }
 
 .help__buttons {
@@ -16,7 +18,6 @@
   align-items: center;
   gap: 70px;
 }
-
 
 
 .help__button {
@@ -50,6 +51,72 @@
   p{
     width: 480px;
     line-height: 20px;
+    color: $color-mine;
   }
 
+}
+
+.help__details {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  width: 900px;
+  margin-right: auto;
+  margin-left: auto;
+  padding-top: 40px;
+  h2 {
+    color: $color-mine;
+    font-family: $font-alt;
+    font-weight: lighter;
+    padding-bottom: 10px;
+  }
+  p {
+    font-family: $font-alt;
+    color: $color-mine;
+    font-weight: lighter;
+    font-style: italic;
+    font-size: 12px;
+    padding-bottom: 20px;
+  }
+  span {
+    font-family: $font-alt;
+    color: $color-mine;
+    font-weight: lighter;
+    font-size: 12px;
+  }
+  &:not(:last-child)::before{
+    position: absolute;
+    content: "";
+    height: 1px;
+    width: 900px;
+    background-color: $color-mine;
+    top: 100%;
+  }
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  cursor: pointer;
+  color: $color-mine;
+  font-size: 14px;
+}
+
+.pagination .active {
+  position: relative;
+  border: transparent;
+}
+
+.pagination .active::before {
+  content: "";
+  position: absolute;
+  width: 25px;
+  height: 30px;
+  background-color: transparent;
+  border: $color-mine 1px solid;
+  box-sizing: border-box;
+  transform: translate(-50%,-50%);
+  top: 50%;
+  left: 50%;
 }

@@ -11,7 +11,7 @@ export default function Home(){
             <ThreeColumns/>
             <Idea/>
             <About/>
-            <Help itemsPerPage={4}/>
+            <Help itemsPerPage={3}/>
         </>
     )
 }
