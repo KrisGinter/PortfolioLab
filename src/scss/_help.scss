@@ -1,0 +1,55 @@
+@import "settings/fonts";
+@import "settings/colors";
+
+.help__heading {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 30px;
+}
+
+.help__buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 70px;
+}
+
+
+
+.help__button {
+  font-size: 18px;
+  font-weight: lighter;
+  background-color: white;
+  color: $color-mine;
+  width: 180px;
+  height: 70px;
+  vertical-align: middle;
+  align-items: center;
+  border: transparent 1px solid;
+  line-height: 20px;
+  cursor: pointer;
+
+  &:hover {
+    border: $color-mine 1px solid;
+  }
+
+}
+
+.active {
+  border: $color-mine 1px solid;
+}
+
+.help__description {
+  padding-top: 30px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  p{
+    width: 480px;
+    line-height: 20px;
+  }
+
+}
