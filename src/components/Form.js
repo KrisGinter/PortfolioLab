@@ -26,7 +26,7 @@ export default function Form() {
 
 
     return (
-        <div className="container form__container">
+        <div id="contact" className="container form__container">
             <div className="form__content">
             <div className="form__heading">
                 <h1>Skontaktuj się z nami</h1>
