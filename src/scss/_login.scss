@@ -1,0 +1,56 @@
+@import "settings/fonts";
+@import "settings/colors";
+
+.login__header {
+padding-left: 691px;
+}
+
+.login__content {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 100px;
+}
+
+.login__form {
+  margin-top: 20px;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  width: 200px;
+  background-color: $color-grey;
+  padding: 10px 50px 40px 50px;
+}
+
+.login__input {
+  border: none;
+  background-color: transparent;
+  border-bottom: $color-dark-grey 1px solid;
+  padding-top: 20px;
+}
+
+.login__label {
+  padding-top: 20px;
+  font-weight: 600;
+  font-size: 13px;
+  color: $color-mine;
+}
+
+.login__buttons {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 200px;
+}
+
+.login__button {
+  background-color: transparent;
+  border: transparent 1px solid;
+  padding: 10px 15px;
+  font-weight: lighter;
+  font-size: 13px;
+  &:hover {
+    border: black 1px solid;
+  }
+}
