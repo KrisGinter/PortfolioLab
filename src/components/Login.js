@@ -1,6 +1,4 @@
 import React from 'react';
-import Header from "./Header";
-import Main from "./Main";
 import {Link} from "react-router-dom";
 import {Link as ScrollLink} from "react-scroll";
 import Decoration from '../assets/Decoration.svg';

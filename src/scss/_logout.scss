@@ -1,0 +1,18 @@
+@import "settings/fonts";
+@import "settings/colors";
+
+.logout__content {
+  h1 {
+    width: 350px;
+  }
+
+}
+
+.logout__button {
+  background-color: transparent;
+  border: black 1px solid;
+  padding: 10px 15px;
+  font-weight: lighter;
+  font-size: 13px;
+  font-family: $font-base;
+}
