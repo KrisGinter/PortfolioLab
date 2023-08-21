@@ -26,7 +26,6 @@ export default function Form() {
         const validationErrors = validateForm();
         setErrors(validationErrors);
         if (Object.keys(validationErrors).length === 0) {
-            setSubmit(true);
             const formData = {
                 name,
                 email,
@@ -52,6 +51,12 @@ export default function Form() {
                         } else {
                             console.error('Error response:', response.status);
                         }
+                    })
+                    .then(() => {
+                        console.log('Data sent successfully');
+                    })
+                    .catch(error => {
+                        console.error('Error sending form data:', error);
                     });
             } catch (error) {
                 console.error('Error sending form data:', error);
