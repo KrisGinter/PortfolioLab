@@ -50,7 +50,12 @@ padding-left: 691px;
   padding: 10px 15px;
   font-weight: lighter;
   font-size: 13px;
+  font-family: $font-base;
   &:hover {
     border: black 1px solid;
   }
+}
+
+.login__button1 {
+  border: black 1px solid;
 }

@@ -69,10 +69,10 @@
 }
 
 .form__heading {
-  padding-left: 70px;
-  img {
-    padding-left: 40px;
-  }
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .footer {
@@ -93,3 +93,26 @@
   gap: 10px;
 }
 
+.error__message {
+  width: 300px;
+}
+
+.error {
+  font-weight: 600;
+  color: red;
+  font-size: 12px;
+}
+
+.error__container {
+  padding-top: 3px;
+  height: 13px;
+}
+
+.success__container {
+  height: 30px;
+  width: 250px;
+  text-align: center;
+  padding-bottom: 20px;
+  font-weight: bold;
+  color: green;
+}

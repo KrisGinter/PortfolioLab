@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Decoration from '../assets/Decoration.svg'
 import Instagram from '../assets/Instagram.svg'
 import Facebook from '../assets/Facebook.svg'
@@ -6,6 +6,8 @@ export default function Form() {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [message, setMessage] = useState('');
+    const [errors, setErrors] = useState({name:'', email:'', message:''})
+    const [submit, setSubmit] = useState(false);
 
     const handleNameChange = (e) => {
         setName(e.target.value);
@@ -21,8 +23,66 @@ export default function Form() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        const validationErrors = validateForm();
+        setErrors(validationErrors);
+        if (Object.keys(validationErrors).length === 0) {
+            setSubmit(true);
+            const formData = {
+                name,
+                email,
+                message,
+            };
+            try {
+                fetch('https://fer-api.coderslab.pl/v1/portfolio/contact', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData),
+                })
+                    .then(response => {
+                        if (response.status === 200) {
+                            setSubmit(true);
+                        } else if (response.status === 400) {
+                            response.json().then(responseData => {
+                                if (responseData.errors) {
+                                    console.error('Error sending form data:');
+                                }
+                            });
+                        } else {
+                            console.error('Error response:', response.status);
+                        }
+                    });
+            } catch (error) {
+                console.error('Error sending form data:', error);
+            }
+        }
+        if (Object.keys(validationErrors).length !== 0) {
+            setSubmit(false);
+        }
+    }
 
-    };
+    const validateForm = () => {
+        const newErrors = {};
+
+        const isValidEmail = (email) => {
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        };
+
+        if (!name.trim() || !/^\S+$/.test(name)) {
+            newErrors.name = "Podane imię jest nieprawidłowe!";
+        }
+
+        if (!email.trim() || !isValidEmail(email)) {
+            newErrors.email = "Podany email jest nieprawidłowy!";
+        }
+
+        if (message.length < 120) {
+            newErrors.message = "Wiadomość musi mieć conajmniej 120 znaków!";
+        }
+
+        return newErrors;
+    }
 
 
     return (
@@ -31,6 +91,8 @@ export default function Form() {
             <div className="form__heading">
                 <h1>Skontaktuj się z nami</h1>
                 <img className="header__decoration" src={Decoration}/>
+                <div className="success__container">{submit && <p>Wiadomość została wysłana!
+                    Wkrótce się skontaktujemy.</p>}</div>
             </div>
             <div className="contact-form">
                 <form onSubmit={handleSubmit}>
@@ -43,8 +105,8 @@ export default function Form() {
                             value={name}
                             onChange={handleNameChange}
                             placeholder="Krzysiek"
-                            required
                         />
+                        <div className="error__container">{errors.name && <p className="error">{errors.name}</p>}</div>
                     </div>
                         <div className="form-group">
                         <label htmlFor="email">Wpisz swój email</label>
@@ -54,8 +116,8 @@ export default function Form() {
                             value={email}
                             onChange={handleEmailChange}
                             placeholder="abc@xyz.pl"
-                            required
                         />
+                            <div className="error__container">{errors.email && <p className="error">{errors.email}</p>}</div>
                         </div>
                     </div>
                     <div className="form-group">
@@ -67,8 +129,8 @@ export default function Form() {
                             placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                              incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
                              exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-                            required
                         />
+                        <div className="error__container">{errors.message && <p className="error error__message">{errors.message}</p>}</div>
                     </div>
                     <button className="form__button" type="submit">Wyślij</button>
                 </form>

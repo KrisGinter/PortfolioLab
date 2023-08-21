@@ -56,7 +56,7 @@ export default function Login(){
                 </form>
                 <div className="login__buttons">
                     <button className="login__button">Załóż konto</button>
-                    <button className="login__button">Zaloguj się</button>
+                    <button className="login__button login__button1">Zaloguj się</button>
                 </div>
             </div>
         </div>

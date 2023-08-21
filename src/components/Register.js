@@ -46,7 +46,7 @@ export default function Register(){
                 </div>
             </div>
             <div className="login__content">
-                <h1>Zaloguj się</h1>
+                <h1>Załóż konto</h1>
                 <img alt="decoration" className="header__decoration" src={Decoration}/>
                 <form className="login__form">
                     <label className="login__label">Email</label>
@@ -58,7 +58,7 @@ export default function Register(){
                 </form>
                 <div className="login__buttons">
                     <button className="login__button">Zaloguj się</button>
-                    <button className="login__button">Załóż konto</button>
+                    <button className="login__button login__button1">Załóż konto</button>
                 </div>
             </div>
         </div>
