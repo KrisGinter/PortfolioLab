@@ -45,7 +45,9 @@ export default function Form() {
                         } else if (response.status === 400) {
                             response.json().then(responseData => {
                                 if (responseData.errors) {
-                                    console.error('Error sending form data:');
+                                    responseData.errors.forEach(err => {
+                                        setErrors(prevState => ({...prevState, [err.param]: err.msg}))
+                                    });
                                 }
                             });
                         } else {
