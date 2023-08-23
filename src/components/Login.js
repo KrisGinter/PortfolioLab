@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {Link} from "react-router-dom";
 import {Link as ScrollLink} from "react-scroll";
 import Decoration from '../assets/Decoration.svg';
 
 export default function Login(){
+
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('')
+
+
     return ( <div className="container">
             <div className="login__header">
             <div className="header__login">

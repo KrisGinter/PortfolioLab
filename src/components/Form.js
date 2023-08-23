@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Decoration from '../assets/Decoration.svg'
 import Instagram from '../assets/Instagram.svg'
 import Facebook from '../assets/Facebook.svg'
@@ -25,7 +25,6 @@ export default function Form() {
         e.preventDefault();
         const validationErrors = validateForm();
         setErrors(validationErrors);
-        if (Object.keys(validationErrors).length === 0) {
             const formData = {
                 name,
                 email,
@@ -43,10 +42,19 @@ export default function Form() {
                         if (response.status === 200) {
                             setSubmit(true);
                         } else if (response.status === 400) {
+                            setSubmit(false);
                             response.json().then(responseData => {
                                 if (responseData.errors) {
                                     responseData.errors.forEach(err => {
-                                        setErrors(prevState => ({...prevState, [err.param]: err.msg}))
+                                        let error = ""
+                                        if (err.param === "name") {
+                                            error = "Podane imię jest nieprawidłowe!"
+                                        } else if (err.param === "email") {
+                                            error = "Podany email jest nieprawidłowy!"
+                                        } else if (err.param === "message") {
+                                            error = "Wiadomość musi mieć conajmniej 120 znaków!"
+                                        }
+                                        setErrors(prevState => ({...prevState, [err.param]: error}))
                                     });
                                 }
                             });
@@ -64,10 +72,8 @@ export default function Form() {
                 console.error('Error sending form data:', error);
             }
         }
-        if (Object.keys(validationErrors).length !== 0) {
-            setSubmit(false);
-        }
-    }
+
+
 
     const validateForm = () => {
         const newErrors = {};
