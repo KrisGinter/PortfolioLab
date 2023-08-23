@@ -92,7 +92,7 @@ export default function Login(){
                 <img alt="decoration" className="header__decoration" src={Decoration}/>
                 <form onSubmit={handleSubmit} className="login__form">
                     <label className="login__label">Email</label>
-                    <input type="email" onChange={handleEmailChange} className="login__input" type="text"/>
+                    <input onChange={handleEmailChange} className="login__input" type="text"/>
                     <div className="error__container">{errors.email && <p className="error">{errors.email}</p>}</div>
                         <label className="login__label">Hasło</label>
                         <input onChange={handlePasswordChange} className="login__input" type="text"/>
